@@ -1,14 +1,33 @@
-package entity;
+package com.robert.entity;
 
-import java.util.List;
+//import java.util.List;
 
+import javax.persistence.Entity;
+import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+//import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
+import javax.persistence.PrimaryKeyJoinColumn;
+
+@Entity
 public class CountryCities {
 
+	@Id
+	@GeneratedValue(strategy=GenerationType.AUTO)
 	private Integer countryCitiesID;
+	
 	private Integer countryID;
+	
 	private Integer cityID;
-	private List<StreetAddress> streetAddress;
+	
+	@OneToOne(fetch = FetchType.LAZY)
+	@PrimaryKeyJoinColumn
 	private Country country;
+	
+	@OneToOne(fetch = FetchType.LAZY)
+	@PrimaryKeyJoinColumn
 	private City city;
 
 	public Country getCountry() {
@@ -49,14 +68,6 @@ public class CountryCities {
 
 	public void setCityID(Integer cityID) {
 		this.cityID = cityID;
-	}
-
-	public List<StreetAddress> getStreetAddress() {
-		return streetAddress;
-	}
-
-	public void setStreetAddress(List<StreetAddress> streetAddress) {
-		this.streetAddress = streetAddress;
 	}
 
 }

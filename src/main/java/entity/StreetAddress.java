@@ -1,13 +1,33 @@
-package entity;
+package com.robert.entity;
 
+import java.util.List;
+
+import javax.persistence.Entity;
+import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+//import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
+
+@Entity
 public class StreetAddress {
-
+	
+	@Id
+	@GeneratedValue(strategy=GenerationType.AUTO)
 	private Integer streetAddressID;
-	private String street;
+	private String streetName;
 	private String streetNumber;
+		
 	private Integer countryCitiesID;
 	private String ZIP;
-	private AddressContactRelationship addressContactRelationship;
+	
+	@OneToMany(fetch = FetchType.LAZY, mappedBy = "streetAddress")
+	private List<AddressContactRelationship> addressContactRelationship;
+	
+	@ManyToOne(fetch = FetchType.LAZY)
+	//@JoinColumn(name = "countryCitiesID", nullable = false)
 	private CountryCities countryCities;
 
 	public Integer getStreetAddressID() {
@@ -18,12 +38,12 @@ public class StreetAddress {
 		this.streetAddressID = streetAddressID;
 	}
 
-	public String getStreet() {
-		return street;
+	public String getStreetName() {
+		return streetName;
 	}
 
-	public void setStreet(String street) {
-		this.street = street;
+	public void setStreetName(String street) {
+		this.streetName = street;
 	}
 
 	public String getStreetNumber() {
@@ -50,20 +70,20 @@ public class StreetAddress {
 		ZIP = zIP;
 	}
 
-	public AddressContactRelationship getAddressContactRelationship() {
-		return addressContactRelationship;
-	}
-
-	public void setAddressContactRelationship(AddressContactRelationship addressContactRelationship) {
-		this.addressContactRelationship = addressContactRelationship;
-	}
-
 	public CountryCities getCountryCities() {
 		return countryCities;
 	}
 
 	public void setCountryCities(CountryCities countryCities) {
 		this.countryCities = countryCities;
+	}
+
+	public List<AddressContactRelationship> getAddressContactRelationship() {
+		return addressContactRelationship;
+	}
+
+	public void setAddressContactRelationship(List<AddressContactRelationship> addressContactRelationship) {
+		this.addressContactRelationship = addressContactRelationship;
 	}
 
 }

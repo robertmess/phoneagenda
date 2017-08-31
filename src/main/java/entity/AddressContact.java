@@ -1,22 +1,41 @@
-package entity;
+package com.robert.entity;
 
+import java.util.List;
+
+import javax.persistence.Entity;
+import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
+
+@Entity
 public class AddressContact {
 
+	@Id
+	@GeneratedValue(strategy=GenerationType.AUTO)
+	
 	private Integer addressContactID;
+	
+	@ManyToOne(fetch = FetchType.LAZY)
+	private AddressBook addressBook;
+
 	private Integer addressBookID;
 	private String firstName;
 	private String lastName;
 	private String Company;
 	private String homePhone;
 	private String workPhone;
-	private AddressBook addressBook;
-	private AddressContactRelationship addressContactRelationship;
+	
+	@OneToMany(fetch = FetchType.LAZY, mappedBy = "addressContacts")
+	private List<AddressContactRelationship> addressContactRelationship;
 
-	public AddressContactRelationship getAddressContactRelationship() {
+	public List<AddressContactRelationship> getAddressContactRelationship() {
 		return addressContactRelationship;
 	}
 
-	public void setAddressContactRelationship(AddressContactRelationship addressContactRelationship) {
+	public void setAddressContactRelationship(List<AddressContactRelationship> addressContactRelationship) {
 		this.addressContactRelationship = addressContactRelationship;
 	}
 

@@ -1,12 +1,18 @@
-package entity;
+package com.robert.entity;
 
-import java.util.List;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
 
+@Entity
 public class AddressType {
 
+	@Id
+	@GeneratedValue(strategy=GenerationType.AUTO)
 	private Integer addressTypeID;
 	private String typeName;
-	private List<AddressContactRelationship> addressContactsRelationship;
+		
 	public Integer getAddressTypeID() {
 		return addressTypeID;
 	}
@@ -19,13 +25,5 @@ public class AddressType {
 	public void setTypeName(String typeName) {
 		this.typeName = typeName;
 	}
-	public List<AddressContactRelationship> getAddressContactsRelationship() {
-		return addressContactsRelationship;
-	}
-	public void setAddressContactsRelationship(List<AddressContactRelationship> addressContactsRelationship) {
-		this.addressContactsRelationship = addressContactsRelationship;
-	}
-	
-	
 	
 }

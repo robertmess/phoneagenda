@@ -1,16 +1,37 @@
-package entity;
+package com.robert.entity;
 
-import java.util.List;
+import javax.persistence.Entity;
+import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+//import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToOne;
+import javax.persistence.PrimaryKeyJoinColumn;
 
+@Entity
 public class AddressContactRelationship {
 
+	@Id
+	@GeneratedValue(strategy=GenerationType.AUTO)
 	private Integer addressContactRelationshipID;
+	
 	private Integer addressContactID;
+	
 	private Integer streetAddressID;
+	
 	private Integer typeID;
-	private List<AddressContact> addressContacts;
+	
+	@ManyToOne(fetch = FetchType.LAZY)
+	private AddressContact addressContacts;
+	
+	@OneToOne(fetch = FetchType.LAZY)
+	@PrimaryKeyJoinColumn
 	private AddressType addressType;
-	private List<StreetAddress> streetAddress;
+	
+	@ManyToOne(fetch = FetchType.LAZY)
+	private StreetAddress streetAddress;
 
 	public AddressType getAddressType() {
 		return addressType;
@@ -18,14 +39,6 @@ public class AddressContactRelationship {
 
 	public void setAddressType(AddressType addressType) {
 		this.addressType = addressType;
-	}
-
-	public List<StreetAddress> getStreetAddress() {
-		return streetAddress;
-	}
-
-	public void setStreetAddress(List<StreetAddress> streetAddress) {
-		this.streetAddress = streetAddress;
 	}
 
 	public Integer getAddressContactRelationshipID() {
@@ -60,12 +73,20 @@ public class AddressContactRelationship {
 		this.typeID = typeID;
 	}
 
-	public List<AddressContact> getAddressContacts() {
+	public AddressContact getAddressContacts() {
 		return addressContacts;
 	}
 
-	public void setAddressContacts(List<AddressContact> addressContacts) {
+	public void setAddressContacts(AddressContact addressContacts) {
 		this.addressContacts = addressContacts;
+	}
+
+	public StreetAddress getStreetAddress() {
+		return streetAddress;
+	}
+
+	public void setStreetAddress(StreetAddress streetAddress) {
+		this.streetAddress = streetAddress;
 	}
 
 }

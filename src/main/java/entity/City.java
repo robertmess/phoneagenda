@@ -1,10 +1,17 @@
-package entity;
+package com.robert.entity;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+
+@Entity
 public class City {
 
+	@Id
+	@GeneratedValue(strategy=GenerationType.AUTO)
 	private Integer cityID;
 	private String cityName;
-	private CountryCities countrycities;
 
 	public Integer getCityID() {
 		return cityID;
@@ -20,14 +27,6 @@ public class City {
 
 	public void setCityName(String cityName) {
 		this.cityName = cityName;
-	}
-
-	public CountryCities getCountrycities() {
-		return countrycities;
-	}
-
-	public void setCountrycities(CountryCities countrycities) {
-		this.countrycities = countrycities;
 	}
 
 }

@@ -1,13 +1,31 @@
-package entity;
+package com.robert.entity;
 
 import java.util.List;
 
+import javax.persistence.Entity;
+import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
+import javax.persistence.PrimaryKeyJoinColumn;
+
+@Entity
 public class AddressBook {
 
+	@Id
+	@GeneratedValue(strategy=GenerationType.AUTO)
 	private Integer addressBookID;
+	
 	private Integer userID;
+	
+	@OneToMany(fetch = FetchType.LAZY, mappedBy = "addressBook")
     private List<AddressContact> addressContacts;
-    private User user;
+    
+	@OneToOne(fetch = FetchType.LAZY)
+	@PrimaryKeyJoinColumn
+	private User user;
     
   	public User getUser() {
 		return user;

@@ -55,7 +55,7 @@ CREATE TABLE [AddressType] (
 
 CREATE TABLE [StreetAddress] (
     [StreetAddressID] int  NOT NULL ,
-    [Street] string  NOT NULL ,
+    [StreetName] string  NOT NULL ,
     [StreetNumber] varchar  NOT NULL ,
     [CountryCitiesID] int  NOT NULL ,
     [ZIP] varchar  NOT NULL ,
