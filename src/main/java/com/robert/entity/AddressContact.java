@@ -88,12 +88,12 @@ public class AddressContact {
 		this.firstName = firstName;
 	}
 
-	public String getLastName() {
-		return lastName;
-	}
-
 	public void setLastName(String lastName) {
 		this.lastName = lastName;
+	}
+	
+	public String getLastName() {
+		return lastName;
 	}
 
 	public String getCompany() {

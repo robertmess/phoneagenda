@@ -175,30 +175,15 @@ public class PhoneBookServiceImpl implements PhoneBookService {
 	}
 
 	@Override
-	public List<AddressContact> addNewAddressContact(String addressContactLastName, String addressContactFirstName) throws Exception {
-		Objects.requireNonNull(addressContactLastName, "contact first name cannot be null.");
-		Objects.requireNonNull(addressContactLastName, "contact last name cannot be null.");
-		addressContact = (List<AddressContact>) new AddressContact();
-		addressContact.set;
-			
-		addressContactRepository.save(addressContact);
-	}
-
-	@Override
 	public List<AddressContact> getAllAddressContact() throws Exception {
-		
 		return this.addressContactRepository.findAll();
-		
 	}
-
+	
 	@Override
-	public void removeAddressContact(String addressContactLastName, String addressContactFirstName) throws Exception {
-		
-		List<AddressContact> addressContact = addressContactRepository.findByLastNameandFirstName(addressContactLastName, addressContactFirstName);
-		if(addressContact != null){
-			addressContactRepository.delete(addressContact);
-		}
-		
+	public List<AddressContact> getAddressContactsByUserName(String userName) throws Exception {
+	List<AddressContact> addressContactList = addressContactRepository.findByAddressBookUserUserName(userName);
+
+	return addressContactList;
 	}
 	
 }

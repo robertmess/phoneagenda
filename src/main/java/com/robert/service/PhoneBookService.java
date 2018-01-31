@@ -15,7 +15,7 @@ public interface PhoneBookService {
 	
 	public List<City> getCitiesForCountry(Integer countryId) throws Exception;
 
-	void addNewCountry(String countryName) throws Exception;
+	public void addNewCountry(String countryName) throws Exception;
 
 	public void removeCountry(String countryName) throws Exception;
 
@@ -23,24 +23,22 @@ public interface PhoneBookService {
 
 	public List<City> getAllCities() throws Exception;
 
-	void  addNewCity(String cityName) throws Exception;
+	public void  addNewCity(String cityName) throws Exception;
 
 	public void removeCity(String cityName) throws Exception;
 
 	public List<User> getAllUsers() throws Exception;
 
-	void addNewUser(String name) throws Exception;
+	public void addNewUser(String name) throws Exception;
 
 	public void removeUser(String name) throws Exception;
 
 	public List<StreetAddress> getAllStreetAddress() throws Exception;
 
-	void addNewStreetAddress(AddressDTO addressDTO) throws Exception;
-
-	public List<AddressContact> addNewAddressContact(String addressContactLastName, String addressContactFirstName) throws Exception;
+	public void addNewStreetAddress(AddressDTO addressDTO) throws Exception;
 
 	public List<AddressContact> getAllAddressContact() throws Exception;
 
-	public void removeAddressContact(String addressContactLastName, String addressContactFirstName) throws Exception;
+	public List<AddressContact> getAddressContactsByUserName(String userName) throws Exception;
 
 }

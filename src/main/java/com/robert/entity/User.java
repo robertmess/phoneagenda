@@ -15,24 +15,6 @@ public class User {
 	@GeneratedValue(strategy=GenerationType.AUTO)
 	private Integer userID;
 	private String userName;
-//	private String firstName;
-//	private String lastName;
-//	
-//	public String getFirstName() {
-//		return firstName;
-//	}
-//
-//	public void setFirstName(String firstName) {
-//		this.firstName = firstName;
-//	}
-//
-//	public String getLastName() {
-//		return lastName;
-//	}
-//
-//	public void setLastName(String lastName) {
-//		this.lastName = lastName;
-//	}
 
 	@OneToOne(fetch = FetchType.LAZY, mappedBy = "user", cascade = CascadeType.ALL)
 	private AddressBook addressBook;

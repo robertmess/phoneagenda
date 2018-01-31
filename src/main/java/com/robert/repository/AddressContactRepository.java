@@ -10,6 +10,10 @@ import com.robert.entity.AddressContact;
 @Repository
 public interface AddressContactRepository extends JpaRepository<AddressContact, Integer> {
 
-	public List<AddressContact> findByLastNameandFirstName (String addressContactLastName, String addressContactFirstName);
-	
+	/**
+	 * vreau sa aduc o lista de address contact pe baza userName, hence trebuie sa trec prin addressbook ca sa aung la user 
+	 * findByAddressBook apeleaza campul addressBook din addressContact
+	 * findByCampulDeCareAveaiNevoie
+	 */
+	public List<AddressContact>  findByAddressBookUserUserName (String username);
 }

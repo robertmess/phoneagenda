@@ -12,6 +12,7 @@ public interface CountryCitiesRepository extends JpaRepository<CountryCities, In
 	
 	public List<CountryCities> findByCountryID(Integer countryId);
 	public List<CountryCities> findByCityID(Integer cityId);
+	
 	public CountryCities findByCountryIDAndCityID(Integer countryId, Integer cityId);
 	
 
